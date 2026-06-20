@@ -405,6 +405,49 @@ export const categories: Category[] = [
         answer:
           'I split requirements by source. For technical requirements I consult the tech lead or solution architect; for business requirements I gather from the PM and Business Analyst. For estimation I base it on complexity and our past velocity rather than gut feel, and I add buffer for testing and bug-fixing. Before committing I sync with the cross-functional teams relying on the feature, and I\'m deliberately detailed when refining tickets — most delivery pain traces back to vague tickets, so I\'d rather over-invest there.',
       },
+      {
+        id: 'code-quality-fast-paced',
+        question: 'How do you ensure code quality in a fast-paced team?',
+        whatTheyAsk: 'Do you keep a high bar without becoming a bottleneck? Is quality systematic or heroic?',
+        answer:
+          'I lean on lightweight guardrails that don\'t slow people down, because in a fast team quality can\'t depend on heroics. First, automate the boring checks: linting, type-checking and tests run in CI so nothing merges without passing — that\'s a big reason I pushed our migration to TypeScript, since strong typing catches a whole class of bugs before review. Second, small, reviewable PRs and clear standards, with review focused on the code and design rather than the person. Third, test coverage proportional to risk — anything touching money or compliance gets integration and E2E coverage (a lesson I learned the hard way after a change to a legacy service broke an existing flow). And finally observability, so when something does slip through we find out fast in production rather than from a customer. The principle is: automate what a machine can check so humans spend their attention on design and edge cases.',
+        tips: [
+          'Frame it as systematic guardrails, not "I review everything myself".',
+          'Link concretely to your stories: TypeScript (prevention) and the E2E-coverage lesson (regression safety).',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'motivation-fit',
+    name: 'Motivation & Fit',
+    blurb: 'Why this company, and how you talk about your own strengths and weaknesses.',
+    questions: [
+      {
+        id: 'why-this-company',
+        question: 'Why do you want to work at [this company] specifically?',
+        whatTheyAsk: 'Have you actually researched us, or are you spraying applications? Is your interest genuine and specific?',
+        answer:
+          'Tailor this — generic answers are obvious. A strong structure has three beats: (1) Mission/product — connect something specific the company does to what you genuinely care about ("you\'re solving X, and reliable financial systems are exactly the kind of high-stakes problem I want to work on"). (2) The engineering challenge — name a concrete problem the role involves that maps to your background, so they picture you doing the job. (3) Growth & values — why this is the right environment for you to grow, and a value or way-of-working of theirs that resonates. End on "why them", not "why me", so they don\'t have to ask.',
+        tips: [
+          'Do real homework: recent product launches, press, eng blog, their stated values — cite one specific thing.',
+          'Map their actual problems to your actual experience; avoid praise that could apply to any company.',
+          'Fill the [bracket] in with the company before each interview — keep one tailored version per application.',
+        ],
+        followUps: ['What do you know about our product?', 'What attracts you over other companies you\'re interviewing with?'],
+      },
+      {
+        id: 'manager-strengths-weaknesses',
+        question: 'What would your current manager say are your biggest strengths and weaknesses?',
+        whatTheyAsk: 'Are you self-aware and able to see yourself through someone else\'s eyes — honestly, not defensively?',
+        answer:
+          'On strengths, my manager would point to ownership and initiative — I tend to pick up problems that aren\'t strictly mine when they matter to the team or customers (like building the international-ID verification path, or driving the TypeScript migration), and I follow them through to a measurable result. They\'d also say I\'m a steady hand in messy situations — I\'ve been brought into struggling teams specifically to help unblock and de-escalate. On weaknesses, they\'d say the same thing I\'d say about myself: I\'m strongest in the technical space and have had to deliberately work on broader stakeholder communication and public speaking. They\'ve seen me improve it over the past year by presenting in chapter meetings and mentoring — so it\'s framed as a real gap I\'m actively closing, not a blind spot.',
+        tips: [
+          'Make the "manager\'s view" of the weakness match your own self-assessment — consistency reads as honesty.',
+          'Back each strength with a one-line concrete example rather than an adjective.',
+        ],
+        followUps: ['Can you give an example of that strength in action?', 'What are you doing about the weakness?'],
+      },
     ],
   },
   {
