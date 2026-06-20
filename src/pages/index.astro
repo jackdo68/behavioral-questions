@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Question from '../components/Question.astro';
+import { categories } from '../data/questions';
+
+const totalQuestions = categories.reduce((n, c) => n + c.questions.length, 0);
+---
+
+<Layout title="Behavioural Interview Prep" active="home">
+  <section class="hero">
+    <div class="container">
+      <h1>Behavioural Interview Prep</h1>
+      <p>
+        {totalQuestions} common values, leadership and management questions — each with a
+        worked STAR answer. Tap any question to unfold the answer.
+      </p>
+    </div>
+  </section>
+
+  <div class="container">
+    <nav class="cat-jump">
+      {categories.map((c) => <a href={`#${c.id}`}>{c.name}</a>)}
+    </nav>
+
+    {categories.map((c) => (
+      <section class="category" id={c.id}>
+        <div class="category-head">
+          <h2>
+            {c.name}
+            <span class="count-badge">{c.questions.length}</span>
+          </h2>
+          <p class="blurb">{c.blurb}</p>
+        </div>
+        {c.questions.map((q) => <Question q={q} />)}
+      </section>
+    ))}
+  </div>
+</Layout>

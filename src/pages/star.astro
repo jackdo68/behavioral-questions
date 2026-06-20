@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const steps = [
+  {
+    letter: 'S',
+    title: 'Situation',
+    body: 'Set the scene briefly. What was the context, the team, the constraints? Give just enough for the rest to make sense — two or three sentences, not a saga.',
+    ask: 'Where were you and what was going on?',
+  },
+  {
+    letter: 'T',
+    title: 'Task',
+    body: 'What was your specific responsibility or goal? Make it clear what was on your plate — interviewers score you on what you did, so anchor the "you" here.',
+    ask: 'What were you responsible for?',
+  },
+  {
+    letter: 'A',
+    title: 'Action',
+    body: 'The heart of the answer. What did you actually do, step by step? Use "I" more than "we" — they want your contribution, not the team\'s. Show your reasoning and trade-offs.',
+    ask: 'What did YOU do, and why?',
+  },
+  {
+    letter: 'R',
+    title: 'Result',
+    body: 'How did it end? Quantify wherever you can (latency dropped 40%, 545k users migrated, velocity up 20%). Then add what you learned and whether you shared it.',
+    ask: 'What changed because of you?',
+  },
+];
+---
+
+<Layout title="The STAR Framework" active="star">
+  <section class="hero">
+    <div class="container">
+      <h1>The STAR Framework</h1>
+      <p>
+        A simple structure for answering any behavioural question clearly and
+        memorably — so your story lands instead of rambling.
+      </p>
+    </div>
+  </section>
+
+  <div class="container prose">
+    <div class="steps">
+      {steps.map((s) => (
+        <div class="step">
+          <div class="step-letter">{s.letter}</div>
+          <div>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+            <span class="ask">{s.ask}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="callout">
+      <h3>The golden ratio</h3>
+      <p style="margin:0;color:var(--text-muted)">
+        Spend the most time on <strong style="color:var(--text)">Action</strong> and
+        <strong style="color:var(--text)">Result</strong>. Keep Situation and Task short — they're
+        just setup. A good split is roughly 15% / 15% / 45% / 25%.
+      </p>
+    </div>
+
+    <h2>Worked example</h2>
+    <p>Question: <em>"Tell me about a time you took initiative."</em></p>
+    <div class="example-box">
+      <p style="color:var(--text-muted)">
+        <strong style="color:#6ea8fe">Situation —</strong> Our KYC flow only accepted two
+        Australian IDs, so international users couldn't onboard. It had been deprioritised because
+        the feature wasn't directly profitable.
+      </p>
+      <p style="color:var(--text-muted)">
+        <strong style="color:var(--purple)">Task —</strong> I chose to champion an alternative
+        verification path, even though it wasn't my team's direct mandate.
+      </p>
+      <p style="color:var(--text-muted)">
+        <strong style="color:var(--amber)">Action —</strong> I gathered user stats and Customer
+        Service input showing ~15% of users couldn't verify and many had churned, researched a
+        third-party provider that validated international IDs, and built the business case for
+        leadership.
+      </p>
+      <p style="color:var(--text-muted)">
+        <strong style="color:var(--green)">Result —</strong> Within a year, hundreds of users were
+        verifying for the first time with international ID — opening a market segment we'd been
+        turning away.
+      </p>
+    </div>
+
+    <h2>Tips that make answers stronger</h2>
+    <ul>
+      <li><strong style="color:var(--text)">Pick distinct stories.</strong> Use each story once per interview — rotate them across questions.</li>
+      <li><strong style="color:var(--text)">Quantify the result.</strong> Numbers stick: "P95 down 40%", "545k users", "60% migrated in 2 months".</li>
+      <li><strong style="color:var(--text)">Own the "I".</strong> Interviewers grade your actions, not the team's. Be honest, but be specific about your part.</li>
+      <li><strong style="color:var(--text)">Prepare for the follow-up.</strong> Expect "What did you learn?", "Did you share it?", and "What would you do differently?"</li>
+      <li><strong style="color:var(--text)">A failure can be a strong answer.</strong> Owning a real mistake and the lesson shows maturity — interviewers reward it.</li>
+      <li><strong style="color:var(--text)">It's a conversation, not an interrogation.</strong> Don't over-rehearse to the point of sounding scripted. Ask for clarification if a question is vague.</li>
+    </ul>
+  </div>
+</Layout>
