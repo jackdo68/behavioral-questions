@@ -183,17 +183,18 @@ export const categories: Category[] = [
         whatTheyAsk: 'Are you self-aware and accountable? Do lessons actually change your behaviour?',
         story: {
           situation:
-            'I introduced a new feature to improve security on a legacy system — a "good to have" enhancement rather than something critical.',
+            'On our serverless AWS stack we use CDK as our infrastructure-as-code, deployed via CloudFormation. During a production release I hit a drift between the IaC and the actual infrastructure — to proceed I had to either update the IaC or remove a log group that was causing the conflict.',
           task:
-            'The goal was to harden the system, but I underestimated how tightly coupled the legacy code was.',
+            'I needed to unblock the release. I was confident that log group wasn\'t referenced anywhere, and we backed logs up to S3 regularly, so I judged it safe to just delete the log group in prod and move on.',
           action:
-            'The change ended up breaking an existing piece of functionality because there wasn\'t enough automated coverage to catch the regression, and I\'d leaned too much on manual checks.',
+            'I went ahead and removed it. The release went through cleanly — no incidents at the time. But a few days later I discovered our log-backup-to-S3 pipeline had been failing, and our Datadog retention is only one month, so we\'d effectively lost a few days of logs. That\'s serious for us: the organisation is PCI compliant and audited every year.',
           result:
-            'We caught and rolled it back, but the lesson stuck: on a legacy system, before adding any feature, I now make sure integration and E2E tests cover the existing behaviour first. I treat "is this protected by tests?" as a precondition, not an afterthought — and I shared that with the team so it became a norm.',
+            'I didn\'t sit on it — I raised it with my manager and the Head of Engineering straight away, we logged it as a formal incident, reviewed and fixed the backup pipeline, and documented the whole thing for the audit trail. The lesson stuck hard: no matter how trivial a task looks, if it\'s outside the scope of what I\'m actually doing — a prod release — and not something we normally do, I confirm it with the team before acting. A "safe" assumption I haven\'t verified isn\'t safe.',
         },
         tips: [
-          'Pick a real, contained mistake — owning a genuine failure reads as a strength.',
-          'Spend most of the answer on the lesson and the changed behaviour.',
+          'Own it cleanly — the strength here is that you escalated proactively rather than hiding it.',
+          'Spend most of the answer on the lesson and the changed behaviour (confirm out-of-scope actions with the team).',
+          'The PCI/audit angle shows you understand business and compliance impact, not just the technical slip.',
         ],
         followUps: ['What did you learn?', 'Did you share it with the team?', 'What would you do differently?'],
       },

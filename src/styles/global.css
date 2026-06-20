@@ -83,6 +83,10 @@ a:hover {
 .nav-brand:hover {
   text-decoration: none;
 }
+.nav-logo {
+  display: block;
+  border-radius: 7px;
+}
 .nav-links {
   display: flex;
   gap: 8px;
